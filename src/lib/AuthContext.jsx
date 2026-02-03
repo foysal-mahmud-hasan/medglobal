@@ -89,7 +89,6 @@ export const AuthProvider = ({ children }) => {
 
   const checkUserAuth = async () => {
     try {
-      // Now check if the user is authenticated
       setIsLoadingAuth(true);
       const currentUser = await base44.auth.me();
       setUser(currentUser);
@@ -97,14 +96,21 @@ export const AuthProvider = ({ children }) => {
       setIsLoadingAuth(false);
     } catch (error) {
       console.error('User auth check failed:', error);
-      setIsLoadingAuth(false);
+      setUser(null);
       setIsAuthenticated(false);
-      
-      // If user auth fails, it might be an expired token
+      setIsLoadingAuth(false);
+      // Always treat 401/403 as auth required and trigger login redirect
       if (error.status === 401 || error.status === 403) {
         setAuthError({
           type: 'auth_required',
           message: 'Authentication required'
+        });
+        // Optionally, immediately redirect to login here if desired
+        // base44.auth.redirectToLogin(window.location.href);
+      } else {
+        setAuthError({
+          type: 'unknown',
+          message: error.message || 'Failed to authenticate user'
         });
       }
     }
