@@ -130,8 +130,8 @@ export const AuthProvider = ({ children }) => {
   };
 
   const navigateToLogin = () => {
-    // Use the SDK's redirectToLogin method
-    base44.auth.redirectToLogin(window.location.href);
+    // Always redirect to the custom domain after login
+    base44.auth.redirectToLogin("https://medglobal.velondra.com/");
   };
 
   return (
