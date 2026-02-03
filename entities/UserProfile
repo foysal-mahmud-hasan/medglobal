@@ -1,0 +1,71 @@
+{
+  "name": "UserProfile",
+  "type": "object",
+  "properties": {
+    "user_type": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "pregnancy",
+          "child_health",
+          "general_health"
+        ]
+      },
+      "description": "User categories selected during onboarding"
+    },
+    "country": {
+      "type": "string"
+    },
+    "age_group": {
+      "type": "string",
+      "enum": [
+        "under_18",
+        "18_25",
+        "26_35",
+        "36_45",
+        "over_45"
+      ]
+    },
+    "preferred_language": {
+      "type": "string",
+      "default": "english"
+    },
+    "is_pregnant": {
+      "type": "boolean",
+      "default": false
+    },
+    "last_menstrual_period": {
+      "type": "string",
+      "format": "date"
+    },
+    "due_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "children": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "birth_date": {
+            "type": "string",
+            "format": "date"
+          }
+        }
+      }
+    },
+    "onboarding_completed": {
+      "type": "boolean",
+      "default": false
+    },
+    "notifications_enabled": {
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "required": []
+}

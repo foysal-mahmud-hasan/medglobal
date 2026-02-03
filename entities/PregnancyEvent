@@ -1,0 +1,46 @@
+{
+  "name": "PregnancyEvent",
+  "type": "object",
+  "properties": {
+    "event_type": {
+      "type": "string",
+      "enum": [
+        "anc_visit",
+        "ultrasound",
+        "blood_test",
+        "danger_signs",
+        "birth_planning"
+      ]
+    },
+    "week_range_start": {
+      "type": "number"
+    },
+    "week_range_end": {
+      "type": "number"
+    },
+    "title": {
+      "type": "string"
+    },
+    "detail_text": {
+      "type": "string"
+    },
+    "notification_before_text": {
+      "type": "string"
+    },
+    "notification_on_day_text": {
+      "type": "string"
+    },
+    "is_completed": {
+      "type": "boolean",
+      "default": false
+    },
+    "scheduled_date": {
+      "type": "string",
+      "format": "date"
+    }
+  },
+  "required": [
+    "event_type",
+    "title"
+  ]
+}

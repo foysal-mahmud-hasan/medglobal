@@ -1,0 +1,74 @@
+{
+  "name": "ChildProfile",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Child's name or nickname"
+    },
+    "birth_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "gender": {
+      "type": "string",
+      "enum": [
+        "male",
+        "female",
+        "other"
+      ]
+    },
+    "country": {
+      "type": "string"
+    },
+    "weight_records": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "format": "date"
+          },
+          "weight_kg": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    "height_records": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "format": "date"
+          },
+          "height_cm": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    "vaccination_records": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "vaccine_name": {
+            "type": "string"
+          },
+          "date_given": {
+            "type": "string",
+            "format": "date"
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "name",
+    "birth_date"
+  ]
+}
